@@ -47,6 +47,7 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->phone}}</td>
                         <td>
+                            <a href="" class="btn btn-warning">Editar</a>
                             <form action="{{ route('users.destroy', $user->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
