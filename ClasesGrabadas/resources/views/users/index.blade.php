@@ -11,7 +11,9 @@
 
 <body>
     <div class="container text-center">
-
+        @if(session('error'))
+            {{session('error')}}
+        @endif
         <form action="{{ route('users.store')}}" method="post">
             @csrf
             <div class="input-group mb-3">
@@ -35,6 +37,7 @@
 
         <table class="table table-striped">
             <thead>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Telefono</th>
@@ -43,6 +46,7 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr>
+                        <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->phone}}</td>
@@ -50,7 +54,7 @@
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">
                                 Editar
                             </a>
-                            <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                            <form action="{{ route('users.destroy', $user->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
