@@ -38,5 +38,15 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
-
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return redirect()->route('users.index');
+        
+    }
 }

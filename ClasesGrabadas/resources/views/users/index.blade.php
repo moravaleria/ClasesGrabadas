@@ -37,8 +37,8 @@
             <thead>
                 <th>Nombre</th>
                 <th>Correo</th>
-                <th>Telefono</th>>
-                <th>Opciones</th>>
+                <th>Telefono</th>
+                <th>Opciones</th>
             </thead>
             <tbody>
                 @foreach ($users as $user)
@@ -47,7 +47,9 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->phone}}</td>
                         <td>
-                            <a href="" class="btn btn-warning">Editar</a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">
+                                Editar
+                            </a>
                             <form action="{{ route('users.destroy', $user->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')

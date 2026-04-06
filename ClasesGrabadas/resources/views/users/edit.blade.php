@@ -11,20 +11,21 @@
 
 <body>
     <div class="container text-center">
-
-        <form action="{{ route('users.store')}}" method="post">
+        <h1>Vista de edit</h1>
+        <form action="{{ route('users.update', $user->id)}}" method="post">
             @csrf
+            @method('PUT')
             <div class="input-group mb-3">
                 <label class="input-group-text" for="name">Nombre:</label>
-                <input type="text" class="form-control" id="name" placeholder="Username" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Username" name="name" value="{{ $user->name }}">
             </div>
             <div class="input-group mb-3">
                 <label class="input-group-text" for="correo">correo:</label>
-                <input type="email" class="form-control" id="correo" placeholder="Username" name="email">
+                <input type="email" class="form-control" id="correo" placeholder="Username" name="email" value="{{ $user->email}}">
             </div>
             <div class="input-group mb-3">
                 <label class="input-group-text" for="telefono">Telefono:</label>
-                <input type="phone" class="form-control" id="telefono" placeholder="Username" name="phone">
+                <input type="phone" class="form-control" id="telefono" placeholder="Username" name="phone" value="{{ $user->phone }}">
             </div>
             <div class="input-group mb-3">
                 <label class="input-group-text" for="password">Contraseña:</label>
@@ -33,7 +34,7 @@
             <button type="submit" class="btn btn-primary">Guardar Usuario</button>
         </form>
 
-       
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
